@@ -146,9 +146,9 @@ public class AppServiceImpl {
 		return listInterest;
 	}
 
-	public Interest getMonthlyInterestAccountWise(LocalDate date) {
+	public List<Interest> getMonthlyInterestAccountWise(LocalDate date) {
 		List<Transaction> transactionList = transactionRepository.findAll();
-		return interestPojoMapperInterestsMonthly(transactionList, date).get(0);
+		return interestPojoMapperInterestsMonthly(transactionList, date);
 	}
 
 	public Interest getCalculateInterestMontly(Transaction trans) {

@@ -68,9 +68,9 @@ public class AppController {
 	 * @param inputDate
 	 * @return
 	 */
-	@GetMapping("/monthly/{month}")
-	public ResponseEntity<Interest> getMonthlyBalance(@PathVariable String inputDate) {
-		LocalDate date = LocalDate.parse(inputDate, DateTimeFormatter.ofPattern("yyyy-MMM-yy"));
+	@GetMapping("/monthly/year/{year}/month/{month}")
+	public ResponseEntity<List<Interest>> getMonthlyBalance(@PathVariable int year, @PathVariable int month) {
+		LocalDate date = LocalDate.of(year, month, 30);
 		return ResponseEntity.ok().body(appServiceImpl.getMonthlyInterestAccountWise(date));
 	}
 }
